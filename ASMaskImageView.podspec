@@ -5,6 +5,7 @@
 #  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
 #  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
 #
+#
 
 Pod::Spec.new do |s|
 
@@ -16,7 +17,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ASMaskImageView"
-  s.version      = "0.0.1"
+  s.version      = "1.0.0"
   s.summary      = "ASMaskImageView is a simple maskView library with UIImageView"
 
   # This description is used to generate tags and improve search results.
@@ -25,6 +26,8 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
+This is a easy UIImageView subClass to get a maskView.
+It will help you to mask UIImageView with UILabel.
                    DESC
 
   s.homepage     = "https://github.com/zkh90644/CoreLibrary/tree/master/ASMaskImageView"
@@ -38,8 +41,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  s.license      = { :type => "Apache License 2.0", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -63,8 +65,8 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  # s.platform     = :ios
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -79,7 +81,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/zkh90644/ASMaskImageView.git", :commit => "0dd91ad" }
+  s.source       = { :git => "https://github.com/zkh90644/ASMaskImageView.git", :tag => "1.0.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
