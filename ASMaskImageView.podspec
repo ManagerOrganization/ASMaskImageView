@@ -81,7 +81,7 @@ It will help you to mask UIImageView with UILabel.
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/zkh90644/ASMaskImageView.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/zkh90644/ASMaskImageView.git", :tag => "1.0.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
