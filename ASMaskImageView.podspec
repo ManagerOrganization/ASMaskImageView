@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ASMaskImageView"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "ASMaskImageView is a simple maskView library with UIImageView"
 
   # This description is used to generate tags and improve search results.
@@ -81,7 +81,7 @@ It will help you to mask UIImageView with UILabel.
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/zkh90644/ASMaskImageView.git", :tag => "1.0.1" }
+  s.source       = { :git => "https://github.com/zkh90644/ASMaskImageView.git", :tag => s.version }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
