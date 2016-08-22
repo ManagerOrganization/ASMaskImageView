@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ASMaskImageView"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "ASMaskImageView is a simple maskView library with UIImageView"
 
   # This description is used to generate tags and improve search results.
@@ -30,7 +30,7 @@ This is a easy UIImageView subClass to get a maskView.
 It will help you to mask UIImageView with UILabel.
                    DESC
 
-  s.homepage     = "https://github.com/zkh90644/CoreLibrary/tree/master/ASMaskImageView"
+  s.homepage     = "https://github.com/zkh90644/ASMaskImageView"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
