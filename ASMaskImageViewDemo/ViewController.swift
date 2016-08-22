@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         touchView = MaskView.init(image:UIImage.init(named: "1")!,frame: CGRect.init(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 100, height: 100)))
+        touchView?.maskBackgroundColor = UIColor.orangeColor()
         
         //        添加到父View
         self.view.addSubview(touchView!)

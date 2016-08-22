@@ -29,6 +29,7 @@ extension UIImage{
 public class MaskView: UIImageView {
     var backgroundImage:UIImage
     public var maskViewArray:[UILabel]
+    public var maskBackgroundColor:UIColor
     
     //    用于存储遮住图片在moveView中的移动位置
     private var infoArray:Array<(offset:CGPoint,image:UIImage,label:UILabel)>
@@ -37,6 +38,7 @@ public class MaskView: UIImageView {
         maskViewArray = []
         infoArray = []
         self.backgroundImage = UIImage()
+        self.maskBackgroundColor = UIColor.whiteColor()
         
         super.init(frame: frame)
         
@@ -167,7 +169,7 @@ public class MaskView: UIImageView {
         //        获得实际上绘制的UIImage
         UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 2)
         
-        backImage.imageReplaceColor(UIColor.whiteColor()).drawInRect(CGRect.init(origin: CGPoint.zero, size: label.frame.size))
+        backImage.imageReplaceColor(self.maskBackgroundColor).drawInRect(CGRect.init(origin: CGPoint.zero, size: label.frame.size))
         
         result.drawInRect(CGRect.init(origin: CGPoint.zero, size: label.frame.size))
         
