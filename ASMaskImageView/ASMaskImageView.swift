@@ -82,7 +82,7 @@ public class MaskView: UIImageView {
         
         if flag == true {
             //        重新绘制UIImageView的layer
-            UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 2)
+            UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0)
             
             //        将界面用背景图先渲染一遍
             backgroundImage.drawInRect(CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
@@ -138,7 +138,7 @@ public class MaskView: UIImageView {
     func getMaskImage(label:UILabel,offset:CGSize)throws -> UIImage{
         
         //        获得问题字图片
-        UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 2)
+        UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 0)
         
         let tempContext = UIGraphicsGetCurrentContext()
         
@@ -155,7 +155,7 @@ public class MaskView: UIImageView {
         
         
         //        获得需要去掉的图片
-        UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 2)
+        UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 0)
         
         backgroundImage.drawInRect(CGRect.init(x: offset.width, y: offset.height, width: self.frame.width, height: self.frame.height))
         
@@ -167,7 +167,7 @@ public class MaskView: UIImageView {
         let result = maskImage(backImage, mask: currentImage)
         
         //        获得实际上绘制的UIImage
-        UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 2)
+        UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 0)
         
         backImage.imageReplaceColor(self.maskBackgroundColor).drawInRect(CGRect.init(origin: CGPoint.zero, size: label.frame.size))
         
