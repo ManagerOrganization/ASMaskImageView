@@ -24,12 +24,37 @@ extension UIImage{
         
         return image
     }
+    
+    static func getRadiusImage(color:UIColor,radius:CGFloat,size:CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        CGContextSetFillColorWithColor(context, color.CGColor)
+        
+        //        绘制圆角
+        CGContextMoveToPoint(context, 0, 0)
+        CGContextAddArcToPoint(context, 0, size.height, size.width, size.height, radius)
+        CGContextAddArcToPoint(context, size.width, size.height, size.width, 0, radius)
+        CGContextAddArcToPoint(context, size.width, 0, 0, 0, radius)
+        CGContextAddArcToPoint(context, 0, 0, 0, size.height, radius)
+        CGContextFillPath(context)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+
 }
 
 public class MaskView: UIImageView {
     var backgroundImage:UIImage
     public var maskViewArray:[UILabel]
     public var maskBackgroundColor:UIColor
+    
+    public var tempImage:UIImage?
     
     //    用于存储遮住图片在moveView中的移动位置
     private var infoArray:Array<(offset:CGPoint,image:UIImage,label:UILabel)>
@@ -52,6 +77,12 @@ public class MaskView: UIImageView {
         backgroundImage = image
     }
     
+    convenience public init(color:UIColor,radius:CGFloat,frame:CGRect){
+        self.init(frame:frame)
+        
+        self.image = UIImage.getRadiusImage(color, radius: radius, size: frame.size)
+    }
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -64,7 +95,7 @@ public class MaskView: UIImageView {
      * @date     2016-8-21
      * @author   zkh90644@gmail.com
      */
-    public func changeMoveImage()throws {
+    public func changeMoveImage() {
         
         var flag = false
         infoArray = []
@@ -74,8 +105,9 @@ public class MaskView: UIImageView {
                 self.frame.origin.y < item.frame.origin.y + item.frame.height &&
                 self.frame.origin.x + self.frame.width >= item.frame.origin.x &&
                 self.frame.origin.x < item.frame.origin.x + item.frame.width{
-                
-                try changeImage(item)
+                autoreleasepool({
+                    changeImage(item)
+                })
                 flag = true
             }
         }
@@ -112,14 +144,14 @@ public class MaskView: UIImageView {
      * @date     2016-8-21
      * @author   zkh90644@gmail.com
      */
-    func changeImage(label:UILabel)throws{
+    func changeImage(label:UILabel){
         
         //        将内容图片绘制到对应的位置
         let offsetX = label.frame.origin.x - self.frame.origin.x
         let offsetY = label.frame.origin.y - self.frame.origin.y
         
         //        创建对应图片在当前位置的修改图
-        let contentImage = try getMaskImage(label,offset: CGSize.init(width: -offsetX, height: -offsetY))
+        let contentImage = getMaskImage(label,offset: CGSize.init(width: -offsetX, height: -offsetY))
         
         self.infoArray.append((CGPoint.init(x: offsetX, y: offsetY),contentImage,label))
     }
@@ -135,24 +167,41 @@ public class MaskView: UIImageView {
      * @date     2016-8-21
      * @author   zkh90644@gmail.com
      */
-    func getMaskImage(label:UILabel,offset:CGSize)throws -> UIImage{
-        
+    func getMaskImage(label:UILabel,offset:CGSize) -> UIImage{
         //        获得问题字图片
+        var offsetLabelX:CGFloat = 0,offsetLabelY:CGFloat = 0
+        
         UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 0)
         
-        let tempContext = UIGraphicsGetCurrentContext()
+        var tempContext = UIGraphicsGetCurrentContext()
         
         let temp = UILabel.init(frame:label.frame)
         temp.font = label.font
         temp.text = label.text
         temp.textColor = UIColor.whiteColor()
+        temp.sizeToFit()
+        if temp.frame.width < label.frame.size.width {
+            offsetLabelX = (label.frame.size.width - temp.frame.width) / 2
+        }
+        if temp.frame.height < label.frame.size.height {
+            offsetLabelY = (label.frame.size.height - temp.frame.height) / 2
+        }
         
         temp.layer.drawInContext(tempContext!)
         
-        let currentImage = UIGraphicsGetImageFromCurrentImageContext()
+        var currentImage = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()
         
+        //        修正字图片的偏移位置
+        UIGraphicsBeginImageContextWithOptions(label.frame.size, false, 0)
+        
+        tempContext = UIGraphicsGetCurrentContext()
+        
+        currentImage.drawAtPoint(CGPoint(x:offsetLabelX,y:offsetLabelY))
+        currentImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
         
         //        获得需要去掉的图片
         UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 0)

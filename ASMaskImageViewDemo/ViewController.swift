@@ -19,10 +19,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        touchView = MaskView.init(image:UIImage.init(named: "1")!,frame: CGRect.init(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 100, height: 100)))
+
+        let image = getRadiusImage(UIColor.redColor(), radius: 5, size: CGSize(width: 200, height: 200))
+
+        touchView = MaskView.init(image:image,frame: CGRect.init(origin: CGPoint(x: 0,y: 0), size: image.size))
+//        touchView?.frame = CGRect(x: 100, y: 100, width: 100, height: 20)
         touchView?.maskBackgroundColor = UIColor.orangeColor()
-        
         //        添加到父View
         self.view.addSubview(touchView!)
         
@@ -34,15 +36,37 @@ class ViewController: UIViewController {
         touchView!.maskViewArray.append(label1)
         touchView!.maskViewArray.append(label2)
         touchView!.maskViewArray.append(label3)
-        
-        try! touchView?.changeMoveImage()
+
+        touchView?.changeMoveImage()
     }
     
-    func move(gesture:UIPanGestureRecognizer)throws {
+    func move(gesture:UIPanGestureRecognizer) {
         touchView?.center = gesture.locationInView(self.view)
         
-        try touchView?.changeMoveImage()
+        touchView?.changeMoveImage()
         
+    }
+    
+    func getRadiusImage(color:UIColor,radius:CGFloat,size:CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        CGContextSetFillColorWithColor(context, color.CGColor)
+        
+//        绘制圆角
+        CGContextMoveToPoint(context, 0, 0)
+        CGContextAddArcToPoint(context, 0, size.height, size.width, size.height, radius)
+        CGContextAddArcToPoint(context, size.width, size.height, size.width, 0, radius)
+        CGContextAddArcToPoint(context, size.width, 0, 0, 0, radius)
+        CGContextAddArcToPoint(context, 0, 0, 0, size.height, radius)
+        CGContextFillPath(context)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
     }
     
 }

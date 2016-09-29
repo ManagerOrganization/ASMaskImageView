@@ -696,6 +696,7 @@
 				276D83141D69FB06008F8992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		276D83151D69FB06008F8992 /* Build configuration list for PBXNativeTarget "ASMaskImageViewTests" */ = {
 			isa = XCConfigurationList;
@@ -704,6 +705,7 @@
 				276D83171D69FB06008F8992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		276D83431D69FBD3008F8992 /* Build configuration list for PBXNativeTarget "ASMaskImageViewDemo" */ = {
 			isa = XCConfigurationList;
@@ -712,6 +714,7 @@
 				276D83451D69FBD3008F8992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		276D83461D69FBD3008F8992 /* Build configuration list for PBXNativeTarget "ASMaskImageViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -720,6 +723,7 @@
 				276D83481D69FBD3008F8992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		276D83491D69FBD3008F8992 /* Build configuration list for PBXNativeTarget "ASMaskImageViewDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -728,6 +732,7 @@
 				276D834B1D69FBD3008F8992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
