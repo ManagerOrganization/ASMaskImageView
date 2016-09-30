@@ -20,11 +20,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let image = getRadiusImage(UIColor.redColor(), radius: 5, size: CGSize(width: 200, height: 200))
+        let image = getRadiusImage(UIColor.red, radius: 5, size: CGSize(width: 200, height: 200))
 
         touchView = MaskView.init(image:image,frame: CGRect.init(origin: CGPoint(x: 0,y: 0), size: image.size))
 //        touchView?.frame = CGRect(x: 100, y: 100, width: 100, height: 20)
-        touchView?.maskBackgroundColor = UIColor.orangeColor()
+        touchView?.maskBackgroundColor = UIColor.orange
         //        添加到父View
         self.view.addSubview(touchView!)
         
@@ -40,33 +40,33 @@ class ViewController: UIViewController {
         touchView?.changeMoveImage()
     }
     
-    func move(gesture:UIPanGestureRecognizer) {
-        touchView?.center = gesture.locationInView(self.view)
+    func move(_ gesture:UIPanGestureRecognizer) {
+        touchView?.center = gesture.location(in: self.view)
         
         touchView?.changeMoveImage()
         
     }
     
-    func getRadiusImage(color:UIColor,radius:CGFloat,size:CGSize) -> UIImage {
+    func getRadiusImage(_ color:UIColor,radius:CGFloat,size:CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         
         let context = UIGraphicsGetCurrentContext()
         
-        CGContextSetFillColorWithColor(context, color.CGColor)
+        context?.setFillColor(color.cgColor)
         
 //        绘制圆角
-        CGContextMoveToPoint(context, 0, 0)
-        CGContextAddArcToPoint(context, 0, size.height, size.width, size.height, radius)
-        CGContextAddArcToPoint(context, size.width, size.height, size.width, 0, radius)
-        CGContextAddArcToPoint(context, size.width, 0, 0, 0, radius)
-        CGContextAddArcToPoint(context, 0, 0, 0, size.height, radius)
-        CGContextFillPath(context)
+        context?.move(to: CGPoint(x: 0, y: 0))
+        context?.addArc(tangent1End: CGPoint(x:0,y:size.width), tangent2End: CGPoint(x:size.width,y:size.height), radius: radius)
+        context?.addArc(tangent1End: CGPoint(x:size.width,y:size.height), tangent2End: CGPoint(x:size.width,y:0), radius: radius)
+        context?.addArc(tangent1End: CGPoint(x:size.width,y:0), tangent2End: CGPoint(x:0,y:0), radius: radius)
+        context?.addArc(tangent1End: CGPoint(x:0,y:0), tangent2End: CGPoint(x:0,y:size.height), radius: radius)
+        context?.fillPath()
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()
         
-        return image
+        return image!
     }
     
 }

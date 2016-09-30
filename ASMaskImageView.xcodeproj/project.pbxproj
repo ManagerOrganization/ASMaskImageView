@@ -297,23 +297,28 @@
 					276D82FD1D69FB06008F8992 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 2322UT7HH9;
+						LastSwiftMigration = 0800;
 					};
 					276D83071D69FB06008F8992 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 2322UT7HH9;
+						LastSwiftMigration = 0800;
 					};
 					276D831D1D69FBD3008F8992 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 2322UT7HH9;
+						LastSwiftMigration = 0800;
 					};
 					276D83301D69FBD3008F8992 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 2322UT7HH9;
+						LastSwiftMigration = 0800;
 						TestTargetID = 276D831D1D69FBD3008F8992;
 					};
 					276D833B1D69FBD3008F8992 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 2322UT7HH9;
+						LastSwiftMigration = 0800;
 						TestTargetID = 276D831D1D69FBD3008F8992;
 					};
 				};
@@ -569,6 +574,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -586,6 +592,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ASMaskImageView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -596,6 +603,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ASMaskImageViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -606,6 +614,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ASMaskImageViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -617,6 +626,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ASMaskImageViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -628,6 +638,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ASMaskImageViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -639,6 +650,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ASMaskImageViewDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASMaskImageViewDemo.app/ASMaskImageViewDemo";
 			};
 			name = Debug;
@@ -651,6 +663,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ASMaskImageViewDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASMaskImageViewDemo.app/ASMaskImageViewDemo";
 			};
 			name = Release;
@@ -662,6 +675,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ASMaskImageViewDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ASMaskImageViewDemo;
 			};
 			name = Debug;
@@ -673,6 +687,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mike.ASMaskImageViewDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ASMaskImageViewDemo;
 			};
 			name = Release;
