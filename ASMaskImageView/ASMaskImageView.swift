@@ -34,7 +34,7 @@ extension UIImage{
         
         //        绘制圆角
         context?.move(to: CGPoint(x: 0, y: 0))
-        context?.addArc(tangent1End: CGPoint(x:0,y:size.width), tangent2End: CGPoint(x:size.width,y:size.height), radius: radius)
+        context?.addArc(tangent1End: CGPoint(x:0,y:size.height), tangent2End: CGPoint(x:size.width,y:size.height), radius: radius)
         context?.addArc(tangent1End: CGPoint(x:size.width,y:size.height), tangent2End: CGPoint(x:size.width,y:0), radius: radius)
         context?.addArc(tangent1End: CGPoint(x:size.width,y:0), tangent2End: CGPoint(x:0,y:0), radius: radius)
         context?.addArc(tangent1End: CGPoint(x:0,y:0), tangent2End: CGPoint(x:0,y:size.height), radius: radius)

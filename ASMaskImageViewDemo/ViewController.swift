@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 //        touchView = MaskView.init(image:image,frame: CGRect.init(origin: CGPoint(x: 0,y: 0), size: image.size))
 //        touchView?.frame = CGRect(x: 100, y: 100, width: 100, height: 20)
         
-        touchView = MaskView.init(color: UIColor.red, radius: 5, frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        touchView = MaskView.init(color: UIColor.red, radius: 10, frame: CGRect(x: 0, y: 0, width: 250, height: 50))
         
         touchView?.maskBackgroundColor = UIColor.orange
         //        添加到父View
