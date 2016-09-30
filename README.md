@@ -15,20 +15,26 @@
 
 
 ##安装方法
----
 **cocoapods**
 
 ```
-pod 'ASMaskImageView', '~> 1.0.0'
+pod 'ASMaskImageView', '~> 1.1.1'
 use_frameworks!
 ```
 ##使用方法
----
 创建需要用来遮罩的**MaskView对象**（该对象继承于UIImageView）
 
 ```
 touchView = MaskView.init(image:UIImage.init(named: "1")!,frame: CGRect.init(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 100, height: 100)))
 ```
+或者直接创建圆角矩形
+
+```
+touchView = MaskView.init(color:UIColor.redColor,radius:5,frame:CGRect.init(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 100, height: 100))
+```
+
+
+
 将需要被遮罩的UILabel控件加入**MaskView对象**的**maskViewArray**属性中
 
 ```
@@ -45,3 +51,7 @@ func move(gesture:UIPanGestureRecognizer)throws {
         
 }
 ```
+
+# ToDo
+
+-[ ] 通过二分法计算label中的值，从而减少计算个数，提高效率

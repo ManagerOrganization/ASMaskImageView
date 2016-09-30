@@ -82,7 +82,9 @@ open class MaskView: UIImageView {
     convenience public init(color:UIColor,radius:CGFloat,frame:CGRect){
         self.init(frame:frame)
         
-        self.image = UIImage.getRadiusImage(color, radius: radius, size: frame.size)
+        let image = UIImage.getRadiusImage(color, radius: radius, size: frame.size)
+        self.image = image
+        backgroundImage = image
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -107,10 +109,7 @@ open class MaskView: UIImageView {
                 self.frame.origin.y < item.frame.origin.y + item.frame.height &&
                 self.frame.origin.x + self.frame.width >= item.frame.origin.x &&
                 self.frame.origin.x < item.frame.origin.x + item.frame.width{
-//                autoreleasepool
-//                autoreleasepool({
                     changeImage(item)
-//                })
                 flag = true
             }
         }
