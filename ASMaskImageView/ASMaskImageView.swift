@@ -187,12 +187,13 @@ open class MaskView: UIImageView {
                 temp.text = label.text
                 temp.textColor = UIColor.white
                 temp.sizeToFit()
-                if temp.frame.width < label.frame.size.width {
+                if temp.frame.width != label.frame.size.width {
                     offsetLabelX = (label.frame.size.width - temp.frame.width) / 2
                 }
-                if temp.frame.height < label.frame.size.height {
+                if temp.frame.height != label.frame.size.height {
                     offsetLabelY = (label.frame.size.height - temp.frame.height) / 2
                 }
+                temp.frame = label.frame
                 
                 temp.layer.draw(in: tempContext!)
                 
