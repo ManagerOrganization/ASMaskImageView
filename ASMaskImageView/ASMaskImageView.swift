@@ -50,7 +50,7 @@ extension UIImage{
 
 }
 
-open class MaskView: UIImageView {
+open class MaskView: UIView {
     var backgroundImage:UIImage
     var labelViewCache:Dictionary<String,UIImage> = Dictionary<String,UIImage>()
     open var maskViewArray:[UILabel]
@@ -75,7 +75,8 @@ open class MaskView: UIImageView {
     convenience public init(image:UIImage,frame:CGRect) {
         self.init(frame:frame)
         
-        self.image = image
+        self.layer.contents = image.cgImage
+//        self.image = image
         backgroundImage = image
     }
     
@@ -83,7 +84,8 @@ open class MaskView: UIImageView {
         self.init(frame:frame)
         
         let image = UIImage.getRadiusImage(color, radius: radius, size: frame.size)
-        self.image = image
+        self.layer.contents = image.cgImage
+//        self.image = image
         backgroundImage = image
     }
     
@@ -130,10 +132,12 @@ open class MaskView: UIImageView {
             //            关闭上下文
             UIGraphicsEndImageContext()
             
-            self.image = image
+            self.layer.contents = image?.cgImage
+//            self.image = image
             
         }else{
-            self.image = backgroundImage
+            self.layer.contents = backgroundImage.cgImage
+//            self.image = backgroundImage
         }
     }
     
@@ -218,17 +222,32 @@ open class MaskView: UIImageView {
             
             //        获得需要去掉的图片
             UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 0)
-            
+
             backgroundImage.draw(in: CGRect.init(x: offset.width, y: offset.height, width: self.frame.width, height: self.frame.height))
             
             let backImage = UIGraphicsGetImageFromCurrentImageContext()
-            
-            
+
             UIGraphicsEndImageContext()
             
             let result = maskImage(backImage!, mask: currentImage!)
             
+            
+            let resultLayer = CALayer()
+            resultLayer.frame = CGRect(origin: CGPoint.zero, size: (backImage?.size)!)
+            resultLayer.contents = backImage?.cgImage
+            
+            let maskLayer = CALayer()
+            maskLayer.frame = CGRect(origin: CGPoint.zero, size: (backImage?.size)!)
+            maskLayer.contents = currentImage?.cgImage
+            
+            resultLayer.mask = maskLayer
+            
             //        获得实际上绘制的UIImage
+            let resultCALayer = CALayer()
+            resultCALayer.frame = CGRect(origin: CGPoint.zero, size: (backImage?.size)!)
+            resultCALayer.contents = backImage?.imageReplaceColor(self.maskBackgroundColor).cgImage
+            resultCALayer.addSublayer(resultLayer)
+            
             UIGraphicsBeginImageContextWithOptions((label.frame.size), false, 0)
             
             backImage?.imageReplaceColor(self.maskBackgroundColor).draw(in: CGRect.init(origin: CGPoint.zero, size: label.frame.size))
