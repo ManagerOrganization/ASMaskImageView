@@ -55,3 +55,4 @@ func move(gesture:UIPanGestureRecognizer)throws {
 # ToDo
 
 -[ ] 通过二分法计算label中的值，从而减少计算个数，提高效率
+-[ ] 修改整体思路，修改layer而不修改image对象，从而使得CPU使用率降低，使用GPU来处理，同时对遮罩层的继承对象从UIImageView转化为UIView
