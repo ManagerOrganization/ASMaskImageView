@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ASMaskImageView"
-  s.version      = "1.1.3"
+  s.version      = "1.1.4"
   s.summary      = "ASMaskImageView is a simple maskView library with UIImageView"
 
   # This description is used to generate tags and improve search results.
